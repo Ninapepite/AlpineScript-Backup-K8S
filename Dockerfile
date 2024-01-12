@@ -20,8 +20,9 @@ RUN mv ./kubectl /usr/local/bin
 COPY entrypoint.sh ./entrypoint.sh
 COPY ./s3config.sh ./s3config.sh
 COPY ./s3push.sh ./s3push.sh
-RUN chmod +x ./s3config.sh ./s3push.sh
+RUN chmod +x ./s3config.sh ./s3push.sh ./entrypoint.sh
 RUN mv ./s3push.sh /usr/local/bin
 RUN mv ./s3config.sh /usr/local/bin
 
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD [ "/bin/sh" ]
